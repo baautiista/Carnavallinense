@@ -3,66 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carnaval de Cádiz 2024</title>
+  <title>COAC 2025 - Votación y Ranking</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <h1>🎭 Carnaval de Cádiz 2024</h1>
-    <p>¡Vota por tus agrupaciones favoritas y revisa el ranking!</p>
+  <header>
+    <h1>🎭 COAC 2025 - Votación y Ranking</h1>
+    <p>Vota por tus agrupaciones favoritas y revisa el ranking por modalidad</p>
   </header>
 
   <main>
-    <!-- Sección de Chirigotas -->
-    <section id="chirigotas" class="section">
-      <h2>Chirigotas</h2>
-      <div class="agrupaciones">
-        <button onclick="votar('Los que siempre llegan tarde')">Los que siempre llegan tarde</button>
-        <button onclick="votar('Los impertinentes')">Los impertinentes</button>
-        <button onclick="votar('Los que no se enteran')">Los que no se enteran</button>
-        <button onclick="votar('Los del último asiento')">Los del último asiento</button>
-        <button onclick="votar('Los despistados')">Los despistados</button>
-        <button onclick="votar('Los de la bombilla fundida')">Los de la bombilla fundida</button>
-        <button onclick="votar('Los del disfraz olvidado')">Los del disfraz olvidado</button>
+    <!-- Sección de Actuaciones por Día -->
+    <section id="actuaciones">
+      <h2>Actuaciones por Día</h2>
+      <div id="dias">
+        <!-- Actuaciones se insertarán dinámicamente aquí -->
       </div>
     </section>
 
-    <!-- Sección de Comparsas -->
-    <section id="comparsas" class="section">
-      <h2>Comparsas</h2>
-      <div class="agrupaciones">
-        <button onclick="votar('El jardín secreto')">El jardín secreto</button>
-        <button onclick="votar('Los guardianes del tiempo')">Los guardianes del tiempo</button>
-        <button onclick="votar('La melodía perdida')">La melodía perdida</button>
-        <button onclick="votar('El alma de Cádiz')">El alma de Cádiz</button>
-        <button onclick="votar('Los viajeros del sur')">Los viajeros del sur</button>
-        <button onclick="votar('La sombra de la luna')">La sombra de la luna</button>
-        <button onclick="votar('Los eternos soñadores')">Los eternos soñadores</button>
-        <button onclick="votar('La voz del silencio')">La voz del silencio</button>
+    <!-- Sección de Ranking por Modalidad -->
+    <section id="ranking">
+      <h2>Ranking por Modalidad</h2>
+      <div id="ranking-cuartetos">
+        <h3>Cuartetos</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Agrupación</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ranking de cuartetos se insertará aquí -->
+          </tbody>
+        </table>
       </div>
-    </section>
-
-    <!-- Sección de Ranking -->
-    <section id="ranking" class="section">
-      <h2>Ranking</h2>
-      <table class="ranking-table">
-        <thead>
-          <tr>
-            <th>Agrupación</th>
-            <th>Puntos</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Las filas del ranking se generarán dinámicamente -->
-        </tbody>
-      </table>
+      <div id="ranking-coros">
+        <h3>Coros</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Agrupación</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ranking de coros se insertará aquí -->
+          </tbody>
+        </table>
+      </div>
+      <div id="ranking-comparsas">
+        <h3>Comparsas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Agrupación</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ranking de comparsas se insertará aquí -->
+          </tbody>
+        </table>
+      </div>
+      <div id="ranking-chirigotas">
+        <h3>Chirigotas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Agrupación</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ranking de chirigotas se insertará aquí -->
+          </tbody>
+        </table>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <p>🎶 Carnaval de Cádiz 2024 - ¡Que viva el Carnaval! 🎶</p>
-  </footer>
-
   <script src="script.js"></script>
 </body>
+</html>
 </html>
