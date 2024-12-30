@@ -34,17 +34,19 @@ async function actualizarRanking() {
 
     if (response.ok) {
       const ranking = await response.json(); // Recibe el ranking desde el servidor
-      const rankingSection = document.getElementById('ranking');
-      const rankingList = rankingSection.querySelector('ul');
-      rankingList.innerHTML = ''; // Limpiar la lista actual
+      const rankingTableBody = document.querySelector('.ranking-table tbody');
+      rankingTableBody.innerHTML = ''; // Limpiar las filas existentes
 
-      // Ordenar por puntos y mostrar el ranking en la página
+      // Ordenar por puntos y mostrar el ranking en la tabla
       Object.entries(ranking)
         .sort((a, b) => b[1] - a[1])
         .forEach(([agrupacion, puntos]) => {
-          const listItem = document.createElement('li');
-          listItem.textContent = `${agrupacion}: ${puntos} puntos`;
-          rankingList.appendChild(listItem);
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${agrupacion}</td>
+            <td>${puntos}</td>
+          `;
+          rankingTableBody.appendChild(row);
         });
     } else {
       alert('Error al obtener el ranking. Intenta nuevamente más tarde.');
