@@ -137,23 +137,7 @@ const actuaciones = {
   }
 };
 
-// Inicializar ranking
-const ranking = { cuartetos: {}, coros: {}, comparsas: {}, chirigotas: {} };
-
-// Función para inicializar los rankings
-function inicializarRankings() {
-  Object.values(actuaciones).forEach((modalidades) => {
-    Object.entries(modalidades).forEach(([modalidad, agrupaciones]) => {
-      agrupaciones.forEach((agrupacion) => {
-        if (!ranking[modalidad][agrupacion]) {
-          ranking[modalidad][agrupacion] = 0;
-        }
-      });
-    });
-  });
-}
-
-// Renderizar actuaciones por día
+// Renderizar actuaciones por día con formulario de puntuación
 function renderActuaciones() {
   const diasDiv = document.getElementById("dias");
   diasDiv.innerHTML = "";
@@ -162,40 +146,47 @@ function renderActuaciones() {
     diaDiv.innerHTML = `<h3>${dia}</h3>`;
     Object.entries(modalidades).forEach(([modalidad, agrupaciones]) => {
       agrupaciones.forEach((agrupacion) => {
-        const button = document.createElement("button");
-        button.textContent = `${agrupacion} (${modalidad})`;
-        button.onclick = () => votar(modalidad, agrupacion);
-        diaDiv.appendChild(button);
+        const agrupacionDiv = document.createElement("div");
+        agrupacionDiv.innerHTML = `
+          <span>${agrupacion} (${modalidad})</span>
+          <select id="puntuacion-${modalidad}-${agrupacion.replace(/\s+/g, "-")}" class="puntuacion-select">
+            ${Array.from({ length: 10 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join("")}
+          </select>
+          <button onclick="puntuar('${modalidad}', '${agrupacion}')">Puntuar</button>
+        `;
+        diaDiv.appendChild(agrupacionDiv);
       });
     });
     diasDiv.appendChild(diaDiv);
   });
 }
 
-// Votar por agrupación
-async function votar(modalidad, agrupacion) {
+// Función para enviar puntuaciones
+async function puntuar(modalidad, agrupacion) {
+  const puntuacionSelect = document.getElementById(`puntuacion-${modalidad}-${agrupacion.replace(/\s+/g, "-")}`);
+  const puntuacion = parseInt(puntuacionSelect.value);
+
   try {
-    const response = await fetch(`${SERVER_URL}/votar`, {
+    const response = await fetch(`${SERVER_URL}/puntuar`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ modalidad, agrupacion }),
+      body: JSON.stringify({ modalidad, agrupacion, puntuacion }),
     });
+
     if (response.ok) {
-      alert(`¡Voto registrado para "${agrupacion}" en ${modalidad}!`);
-      actualizarRanking();
+      alert(`¡Has puntuado con ${puntuacion} a "${agrupacion}" en ${modalidad}!`);
+    } else {
+      const errorData = await response.json();
+      console.error("Error en el servidor:", errorData);
+      alert("Error al registrar la puntuación. Inténtalo de nuevo.");
     }
   } catch (error) {
-    console.error("Error al votar:", error);
+    console.error("Error al puntuar:", error);
+    alert("No se pudo conectar con el servidor. Inténtalo más tarde.");
   }
-}
-
-// Actualizar ranking
-async function actualizarRanking() {
-  console.log("Actualizar ranking aún no implementado.");
 }
 
 // Inicializar la página
 document.addEventListener("DOMContentLoaded", () => {
-  inicializarRankings();
   renderActuaciones();
 });
