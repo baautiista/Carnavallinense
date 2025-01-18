@@ -15,7 +15,7 @@ const actuaciones = {
     cuartetos: ["Ku Klux Klan Klan"],
     coros: []
   },
-  "25 de enero": {
+    "25 de enero": {
     comparsas: ["Los gamberros", "Viaje a la vida", "La resistencia"],
     chirigotas: ["Los muchachos del congelao", "Los pimpinela de la plaza Fragela", "Las anticuarias"],
     coros: [],
@@ -134,7 +134,6 @@ const actuaciones = {
     chirigotas: ["Noche de fiesta", "Quien guarda, halla"],
     comparsas: ["El ejército de Pancho Viña", "¡Si alguno quiere guerrilla!", "Los invasores"],
     cuartetos: []
-  }
 };
 
 // Renderizar actuaciones por día con formulario de puntuación
