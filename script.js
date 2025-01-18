@@ -1,5 +1,5 @@
 // URL del servidor backend
-const SERVER_URL = "https://carnavallinense.onrender.com";
+const SERVER_URL = "https://carnavallinense.vercel.app";
 
 // Datos de las actuaciones por día y modalidad
 const actuaciones = {
