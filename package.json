@@ -1,14 +1,14 @@
 {
-  "name": "-servidor-carnaval",
+  "name": "servidor-carnaval",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Miguel Bautista Lima",
   "license": "ISC",
-  "description": "",
+  "description": "Servidor para gestionar puntuaciones del Carnaval",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2"
